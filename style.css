@@ -1,0 +1,31 @@
+#IcaoInput, #AddButton {
+	height: 21px;
+	vertical-align: middle;
+}
+
+#IcaoInput {
+	border: solid 1px gray;
+	width: 150px;
+	padding-block: 0;
+}
+
+#AddButton {
+	box-sizing: content-box;
+	width: 42px;
+	padding: 0;
+	border: solid 1px gray;
+}
+
+#stationList {
+	margin-left: calc(100% - 200px);
+	width: 200px;
+}
+
+.station {
+	display: flex;
+	justify-content: space-between;
+}
+
+body {
+	text-align: right;
+}
