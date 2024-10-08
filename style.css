@@ -17,15 +17,10 @@
 }
 
 #stationList {
-	margin-left: calc(100% - 200px);
 	width: 200px;
 }
 
 .station {
 	display: flex;
 	justify-content: space-between;
-}
-
-body {
-	text-align: right;
 }
