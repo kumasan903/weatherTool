@@ -5,7 +5,7 @@
 
 #IcaoInput {
 	border: solid 1px gray;
-	width: 150px;
+	width: 180px;
 	padding-block: 0;
 }
 
@@ -17,10 +17,31 @@
 }
 
 #stationList {
-	width: 200px;
+	width: 230px;
 }
 
 .station {
 	display: flex;
 	justify-content: space-between;
+	height: 25px;
+}
+
+.location, .wind, .temp, .qnh {
+	text-align: center;
+}
+
+.location {
+	width: 45px;
+}
+
+.wind {
+	width: 95px;
+}
+
+.temp {
+	width: 20px;
+}
+
+.qnh {
+	width: 40px;
 }

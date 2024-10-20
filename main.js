@@ -26,6 +26,14 @@ function getTemp(metar) {
 		if (metar[i].length == 5 && metar[i][2] == '/') {
 			return metar[i].substring(0,2);
 		}
+		if (metar[i].length == 6 && (metar[i][2] == '/' || metar[i][3] == '/') && (metar[i][1] >= '0' && metar[i][1] <= '9'))
+		{
+			return metar[i].substring(0,2);
+		}
+		if (metar[i].length == 7 && metar[i][3] == '/')
+		{
+			return metar[i].substring(0,2);
+		}
 		i += 1;
 	}
 }
@@ -55,8 +63,15 @@ function getQnh(metar) {
 function add() {
 	let icao = document.getElementById('IcaoInput').value;
 	document.getElementById('IcaoInput').value = "";
-	if (icao.length < 1 || 4 < icao.length) {
+	if (4 < icao.length) {
 		alert("bad input");
+		return;
+	}
+	if (icao.length == 0) {
+		let list = document.getElementById('stationList');
+		let station = document.createElement('tr');
+		station.className = "station";
+		list.appendChild(station);
 		return;
 	}
 	if (icao.length == 3) {
@@ -70,16 +85,20 @@ function add() {
 	}
 	let url = "https://metar.vatsim.net/" + icao;
 	let list = document.getElementById('stationList');
-	let station = document.createElement('div');
-	let location = document.createElement('div');
-	let wind = document.createElement('div');
-	let temp = document.createElement('div');
-	let qnh = document.createElement('div');
+	let station = document.createElement('tr');
+	let location = document.createElement('td');
+	let wind = document.createElement('td');
+	let temp = document.createElement('td');
+	let qnh = document.createElement('td');
 	location.innerHTML = icao.toUpperCase();
 	let metar = reqwest(url);
 	wind.innerHTML = getWind(metar);
 	temp.innerHTML = getTemp(metar);
 	qnh.innerHTML = getQnh(metar);
+	location.className = "location";
+	wind.className = "wind";
+	temp.className = "temp";
+	qnh.className = "qnh";
 	station.appendChild(location);
 	station.appendChild(wind);
 	station.appendChild(temp);
